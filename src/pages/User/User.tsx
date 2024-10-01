@@ -14,26 +14,26 @@ import { saveToken } from "@/api";
 import { userApi } from "@/api/apiQuery";
 
 interface IFormData {
-  email: string;
+  username: string;
   password: string;
 }
 
 const schema = yup.object({
-  email: yup.string().email("Некорректный Email").required("Email - обязательное поле"),
+  username: yup.string().required("Имя пользователя - обязательное поле"),
   password: yup
     .string()
     .required("Введите пароль")
-    .min(6, "Минимальная длина пароля - 6 символов")
+    .min(3, "Минимальная длина пароля - 3 символа")
     .max(24, "Максимальная длина пароля - 24 символа"),
 });
 
 const defaultValues = {
-  email: "",
+  username: "",
   password: "",
 };
 
 const User = () => {
-  const { data: userData } = useAppSelector((state) => state.user);
+  const { details: userData } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -62,10 +62,10 @@ const User = () => {
     dispatch(userLogout());
   };
 
-  if (userData?.name)
+  if (userData?.username)
     return (
       <>
-        Авторизован пользователь: {userData.name}
+        Авторизован пользователь: {userData.username}
         <Btn onClick={Logout}>Выйти</Btn>
       </>
     );
@@ -76,9 +76,9 @@ const User = () => {
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <InputBlock>
-          <StyledLabel htmlFor="email">Email</StyledLabel>
-          <StyledInput type="email" id="email" {...register("email")} />
-          <p className="error">{errors.email?.message}</p>
+          <StyledLabel htmlFor="username">Имя пользователя</StyledLabel>
+          <StyledInput type="text" id="username" {...register("username")} />
+          <p className="error">{errors.username?.message}</p>
         </InputBlock>
 
         <InputBlock>

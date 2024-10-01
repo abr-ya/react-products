@@ -1,8 +1,6 @@
-import axios from "./axios";
-import { IUserLoginPayload } from "./contracts";
+// import axios from "./axios";
+// import { IUserLoginPayload } from "./contracts";
 
-export const baseUrl = "https://api.react-learning.ru/";
+export const baseUrl = import.meta.env.VITE_API_URL;
 
-export const LoginReguest = (payload: IUserLoginPayload) => {
-  return axios.post(`${baseUrl}signin`, payload);
-};
+// export const LoginReguest = (payload: IUserLoginPayload) => axios.post(`${baseUrl}auth/login`, payload);

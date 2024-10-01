@@ -5,18 +5,18 @@ export interface IUserCreatePayload {
 }
 
 export interface IUserLoginPayload {
-  email: string;
+  username: string;
   password: string;
 }
 
 export interface IUser {
-  data: {
-    name: string;
-    about: string;
-    avatar: string;
-    _id: string;
+  details: {
+    about?: string;
+    avatar?: string;
+    id: string;
     email: string;
-    group: string;
+    username: string;
   };
+  isAdmin: boolean;
   token: string;
 }
