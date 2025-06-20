@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { ApiProvider } from "@reduxjs/toolkit/query/react";
 
 import { IUserLoginPayload } from "@api/contracts";
 import { Btn, BtnGhost, H1ExtraBold } from "@components/Common.styled";
@@ -71,7 +70,7 @@ const User = () => {
     );
 
   return (
-    <ApiProvider api={userApi}>
+    <>
       <H1ExtraBold>Вход</H1ExtraBold>
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -92,7 +91,7 @@ const User = () => {
           <BtnGhost onClick={() => navigate("/user/new")}>Регистрация</BtnGhost>
         </ButtonBlock>
       </form>
-    </ApiProvider>
+    </>
   );
 };
 

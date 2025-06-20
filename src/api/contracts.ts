@@ -11,7 +11,6 @@ export interface IUserLoginPayload {
 
 export interface IUser {
   details: {
-    about?: string;
     avatar?: string;
     id: string;
     email: string;

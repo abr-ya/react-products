@@ -10,15 +10,13 @@ const USERKEY = "user"; // todo: move to const!
 const user = JSON.parse(localStorage.getItem(USERKEY));
 
 const initialUser: IUserState = {
-  data: {
-    name: "",
-    about: "",
-    avatar: "",
-    _id: "",
+  details: {
+    id: "",
     email: "",
-    group: "",
+    username: "",
   },
   token: "",
+  isAdmin: false,
 };
 
 const initialState: IUser = user ?? initialUser;
