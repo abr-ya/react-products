@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { IUserLoginPayload } from "@api/contracts";
 import { Btn, BtnGhost, H1ExtraBold } from "@components/Common.styled";
 import { ButtonBlock, InputBlock, StyledLabel, StyledInput } from "@components/Form.styled";
 import { useAppDispatch, useAppSelector } from "@hooks/typedRedux";
 import { userLogin, userLogout } from "@/app/userSlice";
 import { saveToken } from "@/api";
-import { userApi } from "@/api/apiQuery";
+import { userApi } from "./userApi";
+import { IUserLoginPayload } from "./userContracts";
 
 interface IFormData {
   username: string;
@@ -31,7 +31,7 @@ const defaultValues = {
   password: "",
 };
 
-const User = () => {
+const UserPage = () => {
   const { details: userData } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -95,4 +95,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default UserPage;
