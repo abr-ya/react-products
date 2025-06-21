@@ -1,7 +1,5 @@
-import Error404 from "./Error/Error404";
-import Home from "./Home/Home";
-import Product from "./Product/Product";
-import List from "./List/List";
-import UserPage from "./UserPage/UserPage";
-
-export { Error404, Home, Product, List, UserPage };
+export { default as Error404 } from "./ErrorPage/Error404";
+export { default as HomePage } from "./HomePage/HomePage";
+export { default as ProductPage } from "./ProductPage/ProductPage";
+export { default as ProductListPage } from "./ProductListPage/ProductListPage";
+export { default as UserPage } from "./UserPage/UserPage";
