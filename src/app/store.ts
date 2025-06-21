@@ -1,18 +1,18 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import userReducer from "@/app/userSlice";
-import { productsApi } from "@/api/productsApi";
+import { bookingApi } from "@/api/bookingApi";
 
 // Create the root reducer independently to obtain the RootState type
 const rootReducer = combineReducers({
-  [productsApi.reducerPath]: productsApi.reducer,
+  [bookingApi.reducerPath]: bookingApi.reducer,
   user: userReducer,
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    middleware: (gDM) => gDM().concat(productsApi.middleware),
+    middleware: (gDM) => gDM().concat(bookingApi.middleware),
   });
 };
 

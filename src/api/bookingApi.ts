@@ -9,9 +9,9 @@ const prepareHeaders = (headers: Headers) => {
   return headers;
 };
 
-export const productsApi = createApi({
-  reducerPath: "productsApi",
+export const bookingApi = createApi({
+  reducerPath: "bookingApi",
   baseQuery: fetchBaseQuery({ baseUrl, prepareHeaders }),
   endpoints: () => ({}),
-  tagTypes: ["User"],
+  tagTypes: ["Product", "User"],
 });

@@ -1,7 +1,7 @@
-import { productsApi } from "@/api/productsApi";
+import { bookingApi } from "@/api/bookingApi";
 import { IUser, IUserCreatePayload, IUserLoginPayload } from "./userContracts";
 
-export const userApi = productsApi.injectEndpoints({
+export const userApi = bookingApi.injectEndpoints({
   endpoints: (create) => ({
     newUser: create.mutation<IUser, IUserCreatePayload>({
       query(body) {
