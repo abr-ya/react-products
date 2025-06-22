@@ -1,3 +1,4 @@
+import { Flex, Spinner } from "@chakra-ui/react";
 import { productApi } from "./productApi";
 
 const ProductListPage = () => {
@@ -5,7 +6,9 @@ const ProductListPage = () => {
 
   console.log(isLoading, data);
 
-  return <div>ProductListPage</div>;
+  if (isLoading) return <Spinner size="xl" emptyColor="gray.200" color="blue.500" />;
+
+  return <Flex>ProductListPage</Flex>;
 };
 
 export default ProductListPage;

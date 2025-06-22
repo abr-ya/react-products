@@ -13,5 +13,5 @@ export interface IGetProductsPayload {
 export interface IProductCreatePayload {
   name: string;
   price: number;
-  kkal: string;
+  kkal: number;
 }
