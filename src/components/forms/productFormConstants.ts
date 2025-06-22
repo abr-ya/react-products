@@ -1,5 +1,5 @@
 // Form
-export const TEST_MODE = true;
+export const TEST_MODE = false;
 
 export const LABELS = {
   NAME: "Название",

@@ -17,6 +17,14 @@ export const productApi = foodApi.injectEndpoints({
       keepUnusedDataFor: 3,
       // transformResponse: normalizeDetailData,
     }),
+    createProduct: create.mutation<IProduct, IProductCreatePayload>({
+      query: (body) => ({
+        url: `${path}`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Product"],
+    }),
     updateProduct: create.mutation<IProduct, { id: string; payload: IProductCreatePayload }>({
       query: ({ id, payload }) => ({
         url: `${path}${id}`,
