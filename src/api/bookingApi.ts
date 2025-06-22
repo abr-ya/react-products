@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getToken } from "./tokenHelper";
-import { baseUrl } from "./api";
+import { bookingUrl } from "./api";
 
 const prepareHeaders = (headers: Headers) => {
   const token = getToken();
@@ -11,7 +11,7 @@ const prepareHeaders = (headers: Headers) => {
 
 export const bookingApi = createApi({
   reducerPath: "bookingApi",
-  baseQuery: fetchBaseQuery({ baseUrl, prepareHeaders }),
+  baseQuery: fetchBaseQuery({ baseUrl: bookingUrl, prepareHeaders }),
   endpoints: () => ({}),
   tagTypes: ["Product", "User"],
 });

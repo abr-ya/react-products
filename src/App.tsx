@@ -1,15 +1,25 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Box, useColorModeValue } from "@chakra-ui/react";
+
 import { Error404, HomePage, ProductListPage, ProductPage, UserPage } from "@pages/index";
+import { Footer, Header } from "@components/index";
+import { HEIGHT } from "./constants.ts/ui";
 
 const App = () => (
   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/user" element={<UserPage />} />
-      <Route path="/products" element={<ProductListPage />} />
-      <Route path="/products/:id" element={<ProductPage />} />
-      <Route path="*" element={<Error404 />} />
-    </Routes>
+    <Box minH="100vh" w="100%" bg={useColorModeValue("gray.100", "gray.900")} px={5}>
+      <Header />
+      <Box as="main" h={`calc(100vh - ${HEIGHT.footer + HEIGHT.header}px)`}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/user" element={<UserPage />} />
+          <Route path="/products" element={<ProductListPage />} />
+          <Route path="/products/:id" element={<ProductPage />} />
+          <Route path="*" element={<Error404 />} />
+        </Routes>
+      </Box>
+      <Footer />
+    </Box>
   </BrowserRouter>
 );
 
