@@ -1,15 +1,17 @@
-import { bookingApi } from "@/api/bookingApi";
+import { foodApi } from "@/api/foodApi";
 import { IGetProductsPayload, IProduct, IProductCreatePayload } from "./productContracts";
 
-export const productApi = bookingApi.injectEndpoints({
+const path = "ingredients/";
+
+export const productApi = foodApi.injectEndpoints({
   endpoints: (create) => ({
     getProductsList: create.query<IProduct[], IGetProductsPayload>({
-      query: () => ({ url: "products/" }),
+      query: () => ({ url: path }),
       providesTags: ["Product", { type: "Product", id: "detail" }],
     }),
     getProductDetail: create.query<IProduct, string>({
       query: (guid) => ({
-        url: `products/${guid}`,
+        url: `${path}${guid}`,
       }),
       providesTags: ["Product", { type: "Product", id: "detail" }],
       keepUnusedDataFor: 3,
@@ -17,7 +19,7 @@ export const productApi = bookingApi.injectEndpoints({
     }),
     updateProduct: create.mutation<IProduct, { id: string; payload: IProductCreatePayload }>({
       query: ({ id, payload }) => ({
-        url: `products/${id}`,
+        url: `${path}${id}`,
         method: "PATCH",
         body: payload,
       }),

@@ -1,10 +1,9 @@
 export interface IProduct {
-  _id: string;
+  id: string;
   name: string;
-  price: number;
-  image: string;
+  price: number | null;
+  kkal: number;
   createdAt: Date;
-  updatedAt: Date;
 }
 
 export interface IGetProductsPayload {
@@ -14,5 +13,5 @@ export interface IGetProductsPayload {
 export interface IProductCreatePayload {
   name: string;
   price: number;
-  image: string;
+  kkal: string;
 }
