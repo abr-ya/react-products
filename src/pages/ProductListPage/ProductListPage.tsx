@@ -1,13 +1,12 @@
-import { Flex, Spinner, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Flex, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import { productApi } from "./productApi";
+import { BigBlueSpinner } from "@/components";
 
 const ProductListPage = () => {
   const { data, isLoading } = productApi.useGetProductsListQuery({ page: 1 });
   const TITLES = ["Ингредиент", "Ккал", "Цена"];
 
-  console.log(isLoading, data);
-
-  if (isLoading) return <Spinner size="xl" emptyColor="gray.200" color="blue.500" />;
+  if (isLoading) return <BigBlueSpinner />;
 
   if (!data) return <div>Нет данных</div>;
 

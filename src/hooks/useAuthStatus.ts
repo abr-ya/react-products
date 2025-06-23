@@ -6,9 +6,7 @@ export const useAuthStatus = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [checkingStatus, setCheckingStatus] = useState(true);
 
-  const {
-    user: { token },
-  } = useAppSelector((state: RootStateType) => state.auth);
+  const { token } = useAppSelector((state: RootStateType) => state.user);
 
   useEffect(() => {
     setLoggedIn(!!token);

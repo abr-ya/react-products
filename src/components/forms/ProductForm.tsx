@@ -25,7 +25,7 @@ const ProductForm = ({ onModalApply, onModalClose }: IProductForm) => {
     } else {
       onModalApply(normalizedData);
     }
-    onModalClose();
+    // onModalClose(); // todo: are we need it?!
   };
 
   const errorHandler: SubmitErrorHandler<ProductSchemaType> = (errors) => {
@@ -36,8 +36,8 @@ const ProductForm = ({ onModalApply, onModalClose }: IProductForm) => {
     <form onSubmit={handleSubmit(submitHandler, errorHandler)}>
       <Flex flexDirection="column" width="400px" mt={3}>
         <RHFInput<ProductSchemaType> name="name" label={LABELS.NAME} placeholder={PLACEHOLDERS.NAME} />
-        <RHFInput<ProductSchemaType> name="kkal" label={LABELS.KKAL} type="number" />
-        <RHFInput<ProductSchemaType> name="price" label={LABELS.PRICE} type="number" />
+        <RHFInput<ProductSchemaType> name="kkal" label={LABELS.KKAL} />
+        <RHFInput<ProductSchemaType> name="price" label={LABELS.PRICE} />
       </Flex>
       <ModalFooterWithSubmit onCancel={onModalClose} />
     </form>

@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint \"./src/**/*.{js,ts,tsx}\" --quiet",
     "fix": "eslint \"./src/**/*.{js,ts,tsx}\" --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.2.4",

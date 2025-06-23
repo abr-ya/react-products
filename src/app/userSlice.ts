@@ -1,7 +1,5 @@
+import { IUser } from "@/pages/UserPage/userContracts";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "@api/contracts";
-
-interface IUserState extends IUser {}
 
 const USERKEY = "user"; // todo: move to const!
 
@@ -9,7 +7,7 @@ const USERKEY = "user"; // todo: move to const!
 // @ts-expect-error it's normal case if user is empty!)
 const user = JSON.parse(localStorage.getItem(USERKEY));
 
-const initialUser: IUserState = {
+const initialUser: IUser = {
   details: {
     id: "",
     email: "",
