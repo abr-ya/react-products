@@ -1,1 +1,3 @@
+/api-booking/*  http://109.248.160.77:8800/api/:splat  200
+/api-food/*  http://109.248.160.77:4004/:splat  200
 /* /index.html 200
