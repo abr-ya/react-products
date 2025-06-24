@@ -1,8 +1,8 @@
 import { ProductForm } from "@/components/forms";
-import { Button, Modal, ModalContent, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
+import { Button, useDisclosure } from "@chakra-ui/react";
 import { IProductCreatePayload } from "../ProductListPage/productContracts";
 import { productApi } from "../ProductListPage/productApi";
-import { BigBlueSpinner } from "@/components";
+import { CreateModal } from "@/components";
 
 const HomePage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -19,13 +19,9 @@ const HomePage = () => {
   return (
     <>
       <Button onClick={onOpen}>Open Modal</Button>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent px={4} h="400px">
-          <ModalHeader>Create Ingridient</ModalHeader>
-          {isCreating ? <BigBlueSpinner /> : <ProductForm onModalApply={submitHandler} onModalClose={onClose} />}
-        </ModalContent>
-      </Modal>
+      <CreateModal title="Create Ingridient" isOpen={isOpen} onClose={onClose} height="400px" isLoading={isCreating}>
+        <ProductForm onModalApply={submitHandler} onModalClose={onClose} />
+      </CreateModal>
     </>
   );
 };
