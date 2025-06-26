@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
-import { Error404, HomePage, ProductListPage, ProductPage, UserPage } from "@pages/index";
+import { Error404, HomePage, ProductListPage, ProductPage, RecipeListPage, UserPage } from "@pages/index";
 import { Footer, Header } from "@components/index";
 import { HEIGHT } from "./constants.ts/ui";
 
@@ -15,6 +15,7 @@ const App = () => (
           <Route path="/user" element={<UserPage />} />
           <Route path="/products" element={<ProductListPage />} />
           <Route path="/products/:id" element={<ProductPage />} />
+          <Route path="/recipes" element={<RecipeListPage />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </Box>
