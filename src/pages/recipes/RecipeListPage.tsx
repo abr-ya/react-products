@@ -36,7 +36,8 @@ const RecipeListPage = () => {
                 <Td>
                   <ChakraLink as={ReactRouterLink} key={id} to={`/recipes/${id}`}>
                     {name}
-                  </ChakraLink></Td>
+                  </ChakraLink>
+                </Td>
                 <Td>{renderDescription(description || "")}</Td>
               </Tr>
             ))}
