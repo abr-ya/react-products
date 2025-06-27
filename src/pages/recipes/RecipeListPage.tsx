@@ -1,7 +1,8 @@
 import { BigBlueSpinner } from "@/components";
-import { Flex, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Tooltip } from "@chakra-ui/react";
+import { Link as ChakraLink, Flex, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Tooltip } from "@chakra-ui/react";
 import { recipeApi } from "./recipeApi";
 import { strCut } from "@/utils/common";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 const RecipeListPage = () => {
   const { data, isLoading } = recipeApi.useGetRecipesListQuery({ page: 1 });
@@ -32,7 +33,10 @@ const RecipeListPage = () => {
           <Tbody>
             {data.map(({ id, name, description }) => (
               <Tr key={id}>
-                <Td>{name}</Td>
+                <Td>
+                  <ChakraLink as={ReactRouterLink} key={id} to={`/recipes/${id}`}>
+                    {name}
+                  </ChakraLink></Td>
                 <Td>{renderDescription(description || "")}</Td>
               </Tr>
             ))}
