@@ -13,5 +13,5 @@ export const foodApi = createApi({
   reducerPath: "foodApi",
   baseQuery: fetchBaseQuery({ baseUrl: foodUrl, prepareHeaders }),
   endpoints: () => ({}),
-  tagTypes: ["Product", "User", "Recipe"],
+  tagTypes: ["Product", "User", "Recipe", "Hiking"],
 });
