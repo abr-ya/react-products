@@ -1,7 +1,11 @@
-import { Card, CardBody, CardHeader, Heading, SimpleGrid } from "@chakra-ui/react"
+import { Card, CardBody, CardHeader, Heading, SimpleGrid, Text } from "@chakra-ui/react"
 import { IEating } from "./eatingContract"
 
-const DayEatings = (eatings: IEating[]) => {
+interface IEatingProps {
+  eatings: IEating[]
+}
+
+const DayEatings = ({eatings}: IEatingProps ) => {
   
   const EATING_TIMES = ["Завтрак","Обед","Ужин", "Перекус"];
 
@@ -13,7 +17,8 @@ const DayEatings = (eatings: IEating[]) => {
             <Heading size='sm'>{el} </Heading>
           </CardHeader>
           <CardBody>
-            
+            {eatings.filter(eat => eat.eatingTime.name == el)
+            .map(e => <Text>{e.recipe.name}</Text>)}
           </CardBody>
         </Card>
       )}

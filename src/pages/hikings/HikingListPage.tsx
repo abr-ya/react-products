@@ -31,7 +31,7 @@ const HikingsListPage = () => {
                   textTransform="uppercase"
                   ml="2"
                 >
-                  {el.daysTotal} дней &bull; {el.membersTotal} участников
+                  Дней: {el.daysTotal}; Участников: {el.membersTotal} 
                 </Box>
               </Stack>
             </CardBody>
