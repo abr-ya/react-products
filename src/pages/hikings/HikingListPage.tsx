@@ -1,6 +1,7 @@
 import { BigBlueSpinner } from "@/components";
 import { hikingApi } from "./hikingApi";
 import { SimpleGrid, Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Box } from "@chakra-ui/react";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 const HikingsListPage = () => {
 
@@ -37,7 +38,9 @@ const HikingsListPage = () => {
           </CardBody>
           <Divider />
           <CardFooter>
-            <Button>Открыть</Button>
+            <ReactRouterLink to={`/hikings/${el.id}`}>
+              <Button>Открыть</Button>
+            </ReactRouterLink>
           </CardFooter>
         </Card>
       )})}

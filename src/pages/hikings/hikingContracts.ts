@@ -3,7 +3,7 @@ export interface IHiking {
   name: string;
   daysTotal: number;
   membersTotal: number;
-  userId: Date;
+  userId: string;
 }
 
 export interface IGetHikingsPayload {
@@ -14,5 +14,5 @@ export interface IHikingCreatePayload {
   name: string;
   daysTotal: number;
   membersTotal: number;
-  userId: Date;
+  userId: string;
 }
