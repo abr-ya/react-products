@@ -1,3 +1,4 @@
+
 import { Card, CardBody, CardHeader, Heading, SimpleGrid, Text } from "@chakra-ui/react"
 import { IEating } from "./eatingContract"
 
