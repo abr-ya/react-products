@@ -1,6 +1,17 @@
 import { BigBlueSpinner } from "@/components";
 import { hikingApi } from "./hikingApi";
-import { SimpleGrid, Card, CardBody, Stack, Heading, Divider, CardFooter, Button, Image, Box } from "@chakra-ui/react";
+import {
+  SimpleGrid,
+  Card,
+  CardBody,
+  Stack,
+  Heading,
+  Divider,
+  CardFooter,
+  Image,
+  Box,
+  Button,
+} from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 const HikingsListPage = () => {
@@ -31,15 +42,15 @@ const HikingsListPage = () => {
                   textTransform="uppercase"
                   ml="2"
                 >
-                  {el.daysTotal} дней &bull; {el.membersTotal} участников
+                  Дней: {el.daysTotal}; Участников: {el.membersTotal}
                 </Box>
               </Stack>
             </CardBody>
             <Divider />
             <CardFooter>
-              <ReactRouterLink to={`/hikings/${el.id}`}>
-                <Button>Открыть</Button>
-              </ReactRouterLink>
+              <Button as={ReactRouterLink} to={`/hikings/${el.id}`}>
+                Открыть
+              </Button>
             </CardFooter>
           </Card>
         );
