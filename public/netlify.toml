@@ -1,0 +1,4 @@
+[[redirects]]
+from = "/api-food/*"
+to = "http://109.248.160.77:4004/:splat"
+status = 200
