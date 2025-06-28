@@ -5,3 +5,8 @@ command = "sed -i \"s|API_FOOD_STRING|${API_FOOD_URL}|g\" netlify.toml && yarn b
 from = "/api-food/*"
 to = "API_FOOD_STRING:splat"
 status = 200
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
