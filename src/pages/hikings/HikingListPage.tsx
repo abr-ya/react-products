@@ -49,7 +49,7 @@ const HikingsListPage = () => {
             <Divider />
             <CardFooter>
               <Button as={ReactRouterLink} to={`/hikings/${el.id}`}>
-                Открыть
+                Меню
               </Button>
             </CardFooter>
           </Card>
