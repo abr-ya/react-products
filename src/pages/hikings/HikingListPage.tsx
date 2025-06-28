@@ -1,7 +1,6 @@
 import { BigBlueSpinner } from "@/components";
 import { hikingApi } from "./hikingApi";
 import {
-  Link as ChakraLink,
   SimpleGrid,
   Card,
   CardBody,
