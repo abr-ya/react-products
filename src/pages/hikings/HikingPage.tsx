@@ -29,7 +29,7 @@ const HikingPage = () => {
             const eatings = data.eatings.filter(el => el.dayNumber == day);
             return (
             <TabPanel key={day}>
-              < DayEatings eatings={eatings}/>
+              < DayEatings eatings={eatings} membersTotal={data.membersTotal}/>
             </TabPanel>)
             }
           )}

@@ -1,5 +1,5 @@
 import { foodApi } from "@/api/foodApi";
-import { IEating, IGetEatingsPayload, IEatingCreatePayload } from "./eatingContracts";
+import { IEating, IGetEatingsPayload, IEatingCreatePayload } from "./eatingContract";
 
 const path = "eatings/";
 
