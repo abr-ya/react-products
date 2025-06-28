@@ -1,9 +1,12 @@
+import { IEating } from "./eatings/eatingContract";
+
 export interface IHiking {
   id: string;
   name: string;
   daysTotal: number;
   membersTotal: number;
   userId: string;
+  eatings: IEating[];
 }
 
 export interface IGetHikingsPayload {
