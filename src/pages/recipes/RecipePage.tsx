@@ -29,7 +29,7 @@ const RecipePage = () => {
   if (!data) return <div>Нет данных</div>;
 
   return (
-    <Card maxW='md'>
+    <Card maxW="md">
       <CardHeader>
         <Heading size="md">{data.name}</Heading>
       </CardHeader>
