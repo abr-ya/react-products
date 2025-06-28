@@ -1,10 +1,9 @@
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Heading } from '@chakra-ui/react'
-import { useParams } from 'react-router-dom';
-import { hikingApi } from './hikingApi';
-import { BigBlueSpinner } from '@/components';
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Heading } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
+import { hikingApi } from "./hikingApi";
+import { BigBlueSpinner } from "@/components";
 
 const HikingPage = () => {
-
   const { id } = useParams();
 
   const { data, isLoading } = hikingApi.useGetHikingDetailQuery(id as string);
@@ -17,22 +16,24 @@ const HikingPage = () => {
 
   return (
     <span>
-        <Heading>{data.name}</Heading>
-        <Tabs variant='enclosed'>
+      <Heading>{data.name}</Heading>
+      <Tabs variant="enclosed">
         <TabList>
-          {dayNumbers.map(day =>  <Tab>День {day}</Tab>)}   
+          {dayNumbers.map((day) => (
+            <Tab>День {day}</Tab>
+          ))}
         </TabList>
         <TabPanels>
-            <TabPanel>
+          <TabPanel>
             <p>one!</p>
-            </TabPanel>
-            <TabPanel>
+          </TabPanel>
+          <TabPanel>
             <p>two!</p>
-            </TabPanel>
+          </TabPanel>
         </TabPanels>
-        </Tabs>
+      </Tabs>
     </span>
-  )
-}
+  );
+};
 
-export default HikingPage
+export default HikingPage;
