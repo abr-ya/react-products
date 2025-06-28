@@ -1,4 +1,6 @@
-import { IEating } from "./eatings/eatingContracts";
+
+import { IEating } from "./eatings/eatingContract";
+
 
 export interface IHiking {
   id: string;

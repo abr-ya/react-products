@@ -2,6 +2,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel, Heading } from "@chakra-ui/rea
 import { useParams } from "react-router-dom";
 import { hikingApi } from "./hikingApi";
 import { BigBlueSpinner } from "@/components";
+import DayEatings from "./eatings/DayEatings";
 
 const HikingPage = () => {
   const { id } = useParams();
@@ -20,16 +21,18 @@ const HikingPage = () => {
       <Tabs variant="enclosed">
         <TabList>
           {dayNumbers.map((day) => (
-            <Tab>День {day}</Tab>
+            <Tab key={day}>День {day}</Tab>
           ))}
         </TabList>
         <TabPanels>
-          <TabPanel>
-            <p>one!</p>
-          </TabPanel>
-          <TabPanel>
-            <p>two!</p>
-          </TabPanel>
+          {dayNumbers.map(day => {
+            const eatings = data.eatings.filter(el => el.dayNumber == day);
+            return (
+            <TabPanel key={day}>
+              < DayEatings eatings={eatings}/>
+            </TabPanel>)
+            }
+          )}
         </TabPanels>
       </Tabs>
     </span>
