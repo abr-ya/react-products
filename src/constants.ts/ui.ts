@@ -8,6 +8,7 @@ export const topMenu: IMenuItem[] = [
   { path: "/user", title: "User" },
   { path: "/products", title: "Products" },
   { path: "/recipes", title: "Recipes" },
+  { path: "/hikings", title: "Hikings" },
 ];
 
 export const HEIGHT = {
