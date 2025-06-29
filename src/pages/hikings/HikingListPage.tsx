@@ -1,17 +1,6 @@
 import { BigBlueSpinner } from "@/components";
 import { hikingApi } from "./hikingApi";
-import {
-  SimpleGrid,
-  Card,
-  CardBody,
-  Stack,
-  Heading,
-  Divider,
-  CardFooter,
-  Image,
-  Box,
-  Button,
-} from "@chakra-ui/react";
+import { SimpleGrid, Card, CardBody, Stack, Heading, Divider, CardFooter, Image, Box, Button } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 const HikingsListPage = () => {

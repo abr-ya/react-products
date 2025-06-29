@@ -1,52 +1,51 @@
-
-import { Card, CardBody, CardHeader, Heading, SimpleGrid, Text, Table, Tbody, Tr, Td } from "@chakra-ui/react"
-import { IEating } from "./eatingContract"
+import { Card, CardBody, CardHeader, Heading, SimpleGrid, Text, Table, Tbody, Tr, Td } from "@chakra-ui/react";
+import { IEating } from "./eatingContract";
 import { recipeApi } from "@/pages/recipes/recipeApi";
 import { BigBlueSpinner } from "@/components";
 
 interface IEatingProps {
-  eatings: IEating[],
-  membersTotal: number
+  eatings: IEating[];
+  membersTotal: number;
 }
 
-const DayEatings = ({eatings, membersTotal}: IEatingProps ) => {
-  
-  const EATING_TIMES = ["Завтрак","Обед","Ужин", "Перекус"];
+const DayEatings = ({ eatings, membersTotal }: IEatingProps) => {
+  const EATING_TIMES = ["Завтрак", "Обед", "Ужин", "Перекус"];
 
   return (
     <SimpleGrid columns={5} spacing={10}>
-      {EATING_TIMES.map(el => 
+      {EATING_TIMES.map((el) => (
         <Card key={el}>
           <CardHeader>
-            <Heading size='sm'>{el} </Heading>
+            <Heading size="sm">{el} </Heading>
           </CardHeader>
           <CardBody>
-            {eatings.filter(eat => eat.eatingTime.name == el)
-            .map(e => {
-              const { data, isLoading } = recipeApi.useGetRecipeDetailQuery(e.recipeId);
-              if (isLoading) return <BigBlueSpinner />;
-              if (!data) return <div>Нет данных</div>;
-              return(
-                <span>
-                  <Text>{e.recipe.name}</Text>
-                  <Table size="sm">
-                    <Tbody>
-                      {data.ingredients.map(({ id, ingredient, quantity }) => (
-                        <Tr key={id}>
-                          <Td>{ingredient.name}</Td>
-                          <Td>{quantity*membersTotal}</Td>
-                        </Tr>
-                      ))}
-                    </Tbody>
-                  </Table>
-                </span>
-              )
-            })}
+            {eatings
+              .filter((eat) => eat.eatingTime.name == el)
+              .map((e) => {
+                const { data, isLoading } = recipeApi.useGetRecipeDetailQuery(e.recipeId);
+                if (isLoading) return <BigBlueSpinner />;
+                if (!data) return <div>Нет данных</div>;
+                return (
+                  <span>
+                    <Text>{e.recipe.name}</Text>
+                    <Table size="sm">
+                      <Tbody>
+                        {data.ingredients.map(({ id, ingredient, quantity }) => (
+                          <Tr key={id}>
+                            <Td>{ingredient.name}</Td>
+                            <Td>{quantity * membersTotal}</Td>
+                          </Tr>
+                        ))}
+                      </Tbody>
+                    </Table>
+                  </span>
+                );
+              })}
           </CardBody>
         </Card>
-      )}
+      ))}
     </SimpleGrid>
-  )
-}
+  );
+};
 
-export default DayEatings
+export default DayEatings;

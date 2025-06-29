@@ -1,6 +1,4 @@
-
 import { IEating } from "./eatings/eatingContract";
-
 
 export interface IHiking {
   id: string;
