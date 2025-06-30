@@ -16,11 +16,7 @@ const HikingsListPage = () => {
         return (
           <Card maxW="sm" key={el.id}>
             <CardBody>
-              <Image
-                src="/mountains.png"
-                alt="Mountains"
-                borderRadius="lg"
-              />
+              <Image src="/mountains.png" alt="Mountains" borderRadius="lg" />
               <Stack mt="6" spacing="3">
                 <Heading size="md">{el.name}</Heading>
                 <Box

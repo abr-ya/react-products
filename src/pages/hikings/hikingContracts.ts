@@ -1,4 +1,4 @@
-import { IIngredientInRecipe, IRecipe } from "@/pages/recipes/recipeContracts";
+import { IIngredientInRecipe } from "@/pages/recipes/recipeContracts";
 
 export interface IHiking {
   id: string;
