@@ -1,4 +1,4 @@
-import { IEating } from "./eatings/eatingContract";
+import { IIngredientInRecipe, IRecipe } from "@/pages/recipes/recipeContracts";
 
 export interface IHiking {
   id: string;
@@ -18,4 +18,20 @@ export interface IHikingCreatePayload {
   daysTotal: number;
   membersTotal: number;
   userId: string;
+}
+
+export interface IEating {
+  id: string;
+  dayNumber: number;
+  eatingTimeId: string;
+  eatingTime: {
+    id: string;
+    name: string;
+  };
+  recipeId: string;
+  recipe: {
+    name: string;
+    kkal: number;
+    ingredients: IIngredientInRecipe[];
+  };
 }
