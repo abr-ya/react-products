@@ -17,7 +17,7 @@ const HikingsListPage = () => {
           <Card maxW="sm" key={el.id}>
             <CardBody>
               <Image
-                src="https://dbdzm869oupei.cloudfront.net/img/sticker/preview/31507.png"
+                src="/mountains.png"
                 alt="Mountains"
                 borderRadius="lg"
               />

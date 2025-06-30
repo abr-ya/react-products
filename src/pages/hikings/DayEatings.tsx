@@ -1,7 +1,5 @@
 import { Card, CardBody, CardHeader, Heading, SimpleGrid, Text, Table, Tbody, Tr, Td } from "@chakra-ui/react";
-import { IEating } from "./eatingContract";
-import { recipeApi } from "@/pages/recipes/recipeApi";
-import { BigBlueSpinner } from "@/components";
+import { IEating } from "./hikingContracts";
 
 interface IEatingProps {
   eatings: IEating[];
@@ -22,15 +20,12 @@ const DayEatings = ({ eatings, membersTotal }: IEatingProps) => {
             {eatings
               .filter((eat) => eat.eatingTime.name == el)
               .map((e) => {
-                const { data, isLoading } = recipeApi.useGetRecipeDetailQuery(e.recipeId);
-                if (isLoading) return <BigBlueSpinner />;
-                if (!data) return <div>Нет данных</div>;
                 return (
                   <span>
                     <Text>{e.recipe.name}</Text>
                     <Table size="sm">
                       <Tbody>
-                        {data.ingredients.map(({ id, ingredient, quantity }) => (
+                        {e.recipe.ingredients.map(({ id, ingredient, quantity }) => (
                           <Tr key={id}>
                             <Td>{ingredient.name}</Td>
                             <Td>{quantity * membersTotal}</Td>
