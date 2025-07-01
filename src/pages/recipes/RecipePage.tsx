@@ -22,14 +22,17 @@ import { BigBlueSpinner, InputWithEdit } from "@/components";
 const RecipePage = () => {
   const { id } = useParams();
 
-  const { data, isLoading } = recipeApi.useGetRecipeDetailQuery(id as string);
+  const { data, isLoading, isFetching } = recipeApi.useGetRecipeDetailQuery(id as string);
+  const [updateProductLinkMutation, { isLoading: linkUpdating }] = recipeApi.useUpdateRecipeIngredientMutation();
 
   if (isLoading) return <BigBlueSpinner />;
 
   if (!data) return <div>Нет данных</div>;
 
-  const saveHandler = (val: string) => {
-    console.log(val);
+  const saveHandlerCreator = (id: string) => (val: string) => {
+    const quantity = Number(val);
+    console.log(id, quantity);
+    updateProductLinkMutation({ quantity, id, recipeID: id });
   };
 
   return (
@@ -61,7 +64,11 @@ const RecipePage = () => {
                   <Tr key={id}>
                     <Td>{ingredient.name}</Td>
                     <Td>
-                      <InputWithEdit onSave={saveHandler} value={quantity.toString()} />
+                      {linkUpdating || isFetching ? (
+                        "updating..."
+                      ) : (
+                        <InputWithEdit onSave={saveHandlerCreator(id)} value={quantity.toString()} />
+                      )}
                     </Td>
                   </Tr>
                 ))}

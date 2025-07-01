@@ -27,3 +27,16 @@ export interface IIngredientInRecipe {
   };
   quantity: number;
 }
+
+export interface IRecipeToIngredientLink {
+  id: string;
+  recipeID: string;
+  ingredientId: string;
+  quantity: number;
+}
+
+export interface IRecipeToIngredientLinkUpdate {
+  id: string;
+  recipeID: string;
+  quantity: number;
+}
