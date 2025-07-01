@@ -17,7 +17,7 @@ import {
 
 import { useParams } from "react-router-dom";
 import { recipeApi } from "./recipeApi";
-import { BigBlueSpinner } from "@/components";
+import { BigBlueSpinner, InputWithEdit } from "@/components";
 
 const RecipePage = () => {
   const { id } = useParams();
@@ -27,6 +27,10 @@ const RecipePage = () => {
   if (isLoading) return <BigBlueSpinner />;
 
   if (!data) return <div>Нет данных</div>;
+
+  const saveHandler = (val: string) => {
+    console.log(val);
+  };
 
   return (
     <Card maxW="md">
@@ -56,7 +60,9 @@ const RecipePage = () => {
                 {data.ingredients.map(({ id, ingredient, quantity }) => (
                   <Tr key={id}>
                     <Td>{ingredient.name}</Td>
-                    <Td>{quantity}</Td>
+                    <Td>
+                      <InputWithEdit onSave={saveHandler} value={quantity.toString()} />
+                    </Td>
                   </Tr>
                 ))}
               </Tbody>
