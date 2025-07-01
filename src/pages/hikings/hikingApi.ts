@@ -11,7 +11,7 @@ export const hikingApi = foodApi.injectEndpoints({
     }),
     getHikingDetail: create.query<IHiking, string>({
       query: (id) => ({
-        url: `${path}${id}`,
+        url: `${path}with-products/${id}`,
       }),
       providesTags: ["Hiking", { type: "Hiking", id: "detail" }],
     }),

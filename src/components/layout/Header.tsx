@@ -1,7 +1,7 @@
 import { Link as ChakraLink, Flex, HStack, Text } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
-import { HEIGHT, topMenu } from "@/constants.ts/ui";
+import { HEIGHT, topMenu } from "@/constants/ui";
 import CreateButton from "./CreateButton";
 import ChangeThemeButton from "./ChangeThemeButton";
 

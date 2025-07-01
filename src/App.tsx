@@ -1,11 +1,19 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
-import { Error404, HomePage, ProductListPage, ProductPage, RecipeListPage, RecipePage, UserPage } from "@pages/index";
+import {
+  Error404,
+  HikingListPage,
+  HikingPage,
+  HomePage,
+  ProductListPage,
+  ProductPage,
+  RecipeListPage,
+  RecipePage,
+  UserPage,
+} from "@pages/index";
 import { Footer, Header } from "@components/index";
-import { HEIGHT } from "./constants.ts/ui";
-import HikingPage from "./pages/hikings/HikingPage";
-import HikingsListPage from "./pages/hikings/HikingListPage";
+import { HEIGHT } from "./constants/ui";
 
 const App = () => (
   <BrowserRouter>
@@ -20,7 +28,7 @@ const App = () => (
           <Route path="/recipes" element={<RecipeListPage />} />
           <Route path="/recipes/:id" element={<RecipePage />} />
           <Route path="/hikings/:id" element={<HikingPage />} />
-          <Route path="/hikings/" element={<HikingsListPage />} />
+          <Route path="/hikings/" element={<HikingListPage />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </Box>

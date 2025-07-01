@@ -1,8 +1,8 @@
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Heading } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Heading, HStack } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { hikingApi } from "./hikingApi";
 import { BigBlueSpinner } from "@/components";
-import DayEatings from "./eatings/DayEatings";
+import DayEatings from "./components/DayEatings";
 
 const HikingPage = () => {
   const { id } = useParams();
@@ -17,7 +17,10 @@ const HikingPage = () => {
 
   return (
     <span>
-      <Heading>{data.name}</Heading>
+      <HStack spacing="24px" alignItems="baseline">
+        <Heading>{data.name} </Heading>
+        <Heading size="sm">{data.membersTotal} Участников</Heading>
+      </HStack>
       <Tabs variant="enclosed">
         <TabList>
           {dayNumbers.map((day) => (
@@ -25,14 +28,14 @@ const HikingPage = () => {
           ))}
         </TabList>
         <TabPanels>
-          {dayNumbers.map(day => {
-            const eatings = data.eatings.filter(el => el.dayNumber == day);
+          {dayNumbers.map((day) => {
+            const eatings = data.eatings.filter((el) => el.dayNumber == day);
             return (
-            <TabPanel key={day}>
-              < DayEatings eatings={eatings}/>
-            </TabPanel>)
-            }
-          )}
+              <TabPanel key={day}>
+                <DayEatings eatings={eatings} membersTotal={data.membersTotal} />
+              </TabPanel>
+            );
+          })}
         </TabPanels>
       </Tabs>
     </span>
