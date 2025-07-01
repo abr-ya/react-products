@@ -17,16 +17,23 @@ import {
 
 import { useParams } from "react-router-dom";
 import { recipeApi } from "./recipeApi";
-import { BigBlueSpinner } from "@/components";
+import { BigBlueSpinner, InputWithEdit } from "@/components";
 
 const RecipePage = () => {
   const { id } = useParams();
 
-  const { data, isLoading } = recipeApi.useGetRecipeDetailQuery(id as string);
+  const { data, isLoading, isFetching } = recipeApi.useGetRecipeDetailQuery(id as string);
+  const [updateProductLinkMutation, { isLoading: linkUpdating }] = recipeApi.useUpdateRecipeIngredientMutation();
 
   if (isLoading) return <BigBlueSpinner />;
 
   if (!data) return <div>Нет данных</div>;
+
+  const saveHandlerCreator = (id: string) => (val: string) => {
+    const quantity = Number(val);
+    console.log(id, quantity);
+    updateProductLinkMutation({ quantity, id, recipeID: id });
+  };
 
   return (
     <Card maxW="md">
@@ -56,7 +63,13 @@ const RecipePage = () => {
                 {data.ingredients.map(({ id, ingredient, quantity }) => (
                   <Tr key={id}>
                     <Td>{ingredient.name}</Td>
-                    <Td>{quantity}</Td>
+                    <Td>
+                      {linkUpdating || isFetching ? (
+                        "updating..."
+                      ) : (
+                        <InputWithEdit onSave={saveHandlerCreator(id)} value={quantity.toString()} />
+                      )}
+                    </Td>
                   </Tr>
                 ))}
               </Tbody>

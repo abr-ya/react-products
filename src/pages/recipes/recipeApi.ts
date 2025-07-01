@@ -1,5 +1,11 @@
 import { foodApi } from "@/api/foodApi";
-import { IRecipe, IGetRecipesPayload, IRecipeCreatePayload } from "./recipeContracts";
+import {
+  IRecipe,
+  IGetRecipesPayload,
+  IRecipeCreatePayload,
+  IRecipeToIngredientLink,
+  IRecipeToIngredientLinkUpdate,
+} from "./recipeContracts";
 
 const path = "recipes/";
 
@@ -28,6 +34,14 @@ export const recipeApi = foodApi.injectEndpoints({
         url: `${path}${id}`,
         method: "PATCH",
         body: payload,
+      }),
+      invalidatesTags: ["Recipe"],
+    }),
+    updateRecipeIngredient: create.mutation<IRecipeToIngredientLink, IRecipeToIngredientLinkUpdate>({
+      query: ({ id, quantity, recipeID }) => ({
+        url: `${path}${recipeID}/ingredients/${id}`,
+        method: "PATCH",
+        body: { quantity },
       }),
       invalidatesTags: ["Recipe"],
     }),
