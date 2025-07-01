@@ -5,3 +5,5 @@ export { default as ProductListPage } from "./ProductListPage/ProductListPage";
 export { default as UserPage } from "./UserPage/UserPage";
 export { default as RecipeListPage } from "./recipes/RecipeListPage";
 export { default as RecipePage } from "./recipes/RecipePage";
+export { default as HikingListPage } from "./hikings/HikingListPage";
+export { default as HikingPage } from "./hikings/HikingPage";

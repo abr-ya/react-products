@@ -2,7 +2,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel, Heading, HStack } from "@chakr
 import { useParams } from "react-router-dom";
 import { hikingApi } from "./hikingApi";
 import { BigBlueSpinner } from "@/components";
-import DayEatings from "./DayEatings";
+import DayEatings from "./components/DayEatings";
 
 const HikingPage = () => {
   const { id } = useParams();

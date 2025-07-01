@@ -1,5 +1,5 @@
 import { Card, CardBody, CardHeader, Heading, SimpleGrid, Text, Table, Tbody, Tr, Td } from "@chakra-ui/react";
-import { IEating } from "./hikingContracts";
+import { IEating } from "../hikingContracts";
 
 interface IEatingProps {
   eatings: IEating[];
