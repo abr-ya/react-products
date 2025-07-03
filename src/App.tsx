@@ -7,7 +7,6 @@ import {
   HikingPage,
   HomePage,
   ProductListPage,
-  ProductPage,
   RecipeListPage,
   RecipePage,
   UserPage,
@@ -24,7 +23,6 @@ const App = () => (
           <Route path="/" element={<HomePage />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/products" element={<ProductListPage />} />
-          <Route path="/products/:id" element={<ProductPage />} />
           <Route path="/recipes" element={<RecipeListPage />} />
           <Route path="/recipes/:id" element={<RecipePage />} />
           <Route path="/hikings/:id" element={<HikingPage />} />

@@ -26,18 +26,29 @@ const CreateButton = () => {
     </CreateModal>
   );
 
+  const contentRender = (page: string) => {
+    switch (page) {
+      case "/products":
+        return modalRender(
+          "Create Product",
+          productCreating,
+          <ProductForm onModalApply={productCreateHandler} onModalClose={onClose} />,
+        );
+      case "/recipes":
+        return modalRender("Create Recipe", false, <span>Форма добавления рецепта</span>);
+      default:
+        if (page.startsWith("/recipes/"))
+          return modalRender("Add Product", false, <span>Форма добавления ингридиента в рецепт</span>);
+        return modalRender("Create Modal", false, <span>Нет создания на этой странице</span>);
+    }
+  };
+
   return (
     <>
       <Button onClick={onOpen}>
         <PlusSquareIcon fontSize={20} />
       </Button>
-      {pagePath === "/products"
-        ? modalRender(
-            "Create Product",
-            productCreating,
-            <ProductForm onModalApply={productCreateHandler} onModalClose={onClose} />,
-          )
-        : modalRender("Create Modal", false, <span>Нет создания на этой странице</span>)}
+      {contentRender(pagePath)}
     </>
   );
 };
