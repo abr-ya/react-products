@@ -15,6 +15,10 @@ export const hikingApi = foodApi.injectEndpoints({
       }),
       providesTags: ["Hiking", { type: "Hiking", id: "detail" }],
     }),
+    getHikingShoppingList: create.query<IHiking, string>({
+      query: (id) => ({ url: `${path}shopping/${id}` }),
+      providesTags: ["Hiking", { type: "Hiking", id: "shopping" }],
+    }),
     createHiking: create.mutation<IHiking, IHikingCreatePayload>({
       query: (body) => ({
         url: `${path}`,
