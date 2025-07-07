@@ -19,23 +19,21 @@ const DayEatings = ({ eatings, membersTotal }: IEatingProps) => {
           <CardBody>
             {eatings
               .filter((eat) => eat.eatingTime.name == el)
-              .map((e) => {
-                return (
-                  <span>
-                    <Text>{e.recipe.name}</Text>
-                    <Table size="sm">
-                      <Tbody>
-                        {e.recipe.ingredients.map(({ id, ingredient, quantity }) => (
-                          <Tr key={id}>
-                            <Td>{ingredient.name}</Td>
-                            <Td>{quantity * membersTotal}</Td>
-                          </Tr>
-                        ))}
-                      </Tbody>
-                    </Table>
-                  </span>
-                );
-              })}
+              .map((e) => (
+                <div key={e.id}>
+                  <Text>{e.recipe.name}</Text>
+                  <Table size="sm">
+                    <Tbody>
+                      {e.recipe.ingredients.map(({ id, ingredient, quantity }) => (
+                        <Tr key={id}>
+                          <Td>{ingredient.name}</Td>
+                          <Td>{quantity * membersTotal}</Td>
+                        </Tr>
+                      ))}
+                    </Tbody>
+                  </Table>
+                </div>
+              ))}
           </CardBody>
         </Card>
       ))}
