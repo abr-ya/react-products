@@ -35,3 +35,9 @@ export interface IEating {
     ingredients: IIngredientInRecipe[];
   };
 }
+
+export interface IHikingProduct {
+  id: string;
+  name: string;
+  sum: number;
+}

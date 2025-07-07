@@ -1,4 +1,5 @@
 export { default as BigBlueSpinner } from "./BigBlueSpinner";
+export { default as CreateExcel } from "./CreateExcel";
 export { default as InputWithEdit } from "./InputWithEdit";
 export { default as Select } from "./Select/Select";
 export { SelectWithSearch } from "./Select/SelectWithSearch";

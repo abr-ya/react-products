@@ -1,6 +1,7 @@
-import { BigBlueSpinner } from "@/components";
+import { BigBlueSpinner, CreateExcel } from "@/components";
 import { hikingApi } from "../hikingApi";
 import { Code } from "@chakra-ui/react";
+import { IHikingProduct } from "../hikingContracts";
 
 interface IShoppingList {
   id: string;
@@ -17,6 +18,7 @@ const ShoppingList = ({ id }: IShoppingList) => {
     <div>
       <h2>ShoppingList {id} </h2>
       <Code>{JSON.stringify(data)}</Code>
+      <CreateExcel<IHikingProduct> data={data} fileName="ShoppingList" />
     </div>
   );
 };
