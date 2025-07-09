@@ -3,12 +3,12 @@ export const TEST_MODE = false;
 
 export const LABELS = {
   NAME: "Название",
-  DESCRIPTION: "Описание"
+  DESCRIPTION: "Описание",
 };
 
 export const PLACEHOLDERS = {
   NAME: "Введите название рецепта",
-  DESCRIPTION: "Введите описание рецепта"
+  DESCRIPTION: "Введите описание рецепта",
 };
 
 export const ERROR = {

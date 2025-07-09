@@ -40,3 +40,5 @@ export interface IRecipeToIngredientLinkUpdate {
   recipeID: string;
   quantity: number;
 }
+
+export type AddIngredientParamsType = Omit<IRecipeToIngredientLink, "id">;

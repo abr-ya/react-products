@@ -1,12 +1,11 @@
 import { Button, useDisclosure } from "@chakra-ui/react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
-import { CreateModal, ProductForm } from "..";
+import { CreateModal, ProductForm, ProductToRecipeForm, RecipeForm } from "..";
 import { IProductCreatePayload } from "@/pages/ProductListPage/productContracts";
 import { productApi } from "@/pages/ProductListPage/productApi";
 import { useLocation } from "react-router-dom";
 import { recipeApi } from "@/pages/recipes/recipeApi";
-import { IRecipeCreatePayload } from "@/pages/recipes/recipeContracts";
-import RecipeForm from "../forms/RecipeForm";
+import { AddIngredientParamsType, IRecipeCreatePayload } from "@/pages/recipes/recipeContracts";
 
 const CreateButton = () => {
   const location = useLocation();
@@ -39,6 +38,10 @@ const CreateButton = () => {
       .catch((err) => console.log(err));
   };
 
+  const addProductToRecipeHandler = (data: AddIngredientParamsType) => {
+    console.log(data);
+  };
+
   const contentRender = (page: string) => {
     switch (page) {
       case "/products":
@@ -51,11 +54,16 @@ const CreateButton = () => {
         return modalRender(
           "Create Recipe",
           recipeCreating,
-          <RecipeForm onModalApply={recipeCreateHandler} onModalClose={onClose}/>
+          <RecipeForm onModalApply={recipeCreateHandler} onModalClose={onClose} />,
         );
       default:
         if (page.startsWith("/recipes/"))
-          return modalRender("Add Product", false, <span>Форма добавления ингридиента в рецепт</span>);
+          return modalRender(
+            "Add Product",
+            false,
+            <ProductToRecipeForm onModalApply={addProductToRecipeHandler} onModalClose={onClose} />,
+          );
+
         return modalRender("Create Modal", false, <span>Нет создания на этой странице</span>);
     }
   };

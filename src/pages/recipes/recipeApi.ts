@@ -5,6 +5,7 @@ import {
   IRecipeCreatePayload,
   IRecipeToIngredientLink,
   IRecipeToIngredientLinkUpdate,
+  AddIngredientParamsType,
 } from "./recipeContracts";
 
 const path = "recipes/";
@@ -34,6 +35,14 @@ export const recipeApi = foodApi.injectEndpoints({
         url: `${path}${id}`,
         method: "PATCH",
         body: payload,
+      }),
+      invalidatesTags: ["Recipe"],
+    }),
+    addRecipeIngredient: create.mutation<IRecipeToIngredientLink, AddIngredientParamsType>({
+      query: ({ recipeID, ...body }) => ({
+        url: `${path}${recipeID}/ingredients/`,
+        method: "POST",
+        body,
       }),
       invalidatesTags: ["Recipe"],
     }),

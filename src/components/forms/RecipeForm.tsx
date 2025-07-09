@@ -36,8 +36,11 @@ const RecipeForm = ({ onModalApply, onModalClose }: IRecipeForm) => {
     <form onSubmit={handleSubmit(submitHandler, errorHandler)}>
       <Flex flexDirection="column" width="400px" mt={3}>
         <RHFInput<RecipeSchemaType> name="name" label={LABELS.NAME} placeholder={PLACEHOLDERS.NAME} />
-        <RHFInput<RecipeSchemaType> name="description" label={LABELS.DESCRIPTION} placeholder={PLACEHOLDERS.DESCRIPTION} />
-      
+        <RHFInput<RecipeSchemaType>
+          name="description"
+          label={LABELS.DESCRIPTION}
+          placeholder={PLACEHOLDERS.DESCRIPTION}
+        />
       </Flex>
       <ModalFooterWithSubmit onCancel={onModalClose} />
     </form>
@@ -48,7 +51,7 @@ const RecipeFormProvider = (props: IRecipeForm) => {
   const formMethods = useForm<RecipeSchemaType>({
     defaultValues: {
       ...defaultValues,
-      userId: "kp_7771f990484240e4a0652b4fb2570611"
+      userId: "kp_7771f990484240e4a0652b4fb2570611",
     },
     mode: "all",
     resolver: zodResolver(recipeSchema),
