@@ -2,7 +2,7 @@ import AsyncSelect from "react-select/async";
 
 import { InputWithEdit, SelectWithSearch } from "@/components";
 import axios from "axios";
-import { foodUrl } from "@/api";
+import { foodUrl, getProductsAsync } from "@/api";
 import { IProduct } from "../ProductListPage/productContracts";
 
 const HomePage = () => {
@@ -21,8 +21,6 @@ const HomePage = () => {
       return options;
     });
   };
-
-  const getProductsAsync = (inputValue: string) => axios.get(`${foodUrl}ingredients?like=${inputValue}`);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const clgHandler = (data: any) => {

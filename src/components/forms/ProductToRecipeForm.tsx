@@ -1,14 +1,16 @@
 import { AddIngredientParamsType } from "@/pages/recipes/recipeContracts";
 import { FormProvider, SubmitErrorHandler, SubmitHandler, useForm, useFormContext } from "react-hook-form";
 
-import { LABELS, PLACEHOLDERS, TEST_MODE } from "./productToRecipeConstantsTemp";
+import { LABELS, PLACEHOLDERS, TEST_MODE } from "./productToRecipeConstants";
 import { ModalFooterWithSubmit } from "../modals/ModalFooterWithSubmit";
 import { Flex } from "@chakra-ui/react";
 import { defaultValues, productToRecipeFormSchema, ProductToRecipeFormSchemaType } from "./productToRecipeFormSchema";
-import { RHFInput } from "../rhf";
-import { normalizeAddProductParams } from "./normalize";
+import { RHFInput, RHFSelectWithSearch } from "../rhf";
+import { normalizeAddProductParams, prepareProductToSelect } from "./normalize";
 import { DevTool } from "@hookform/devtools";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { IProduct } from "@/pages/ProductListPage/productContracts";
+import { getProductsAsync } from "@/api";
 
 interface IProductToRecipeForm {
   onModalApply(data: AddIngredientParamsType): void;
@@ -34,10 +36,12 @@ const ProductToRecipeForm = ({ onModalApply, onModalClose }: IProductToRecipeFor
   return (
     <form onSubmit={handleSubmit(submitHandler, errorHandler)}>
       <Flex flexDirection="column" width="400px" mt={3}>
-        <RHFInput<ProductToRecipeFormSchemaType>
+        <RHFSelectWithSearch<ProductToRecipeFormSchemaType, IProduct>
           name="productId"
           label={LABELS.PRODUCT}
           placeholder={PLACEHOLDERS.PRODUCT}
+          mapFunc={prepareProductToSelect}
+          searchRequest={getProductsAsync}
         />
         <RHFInput<ProductToRecipeFormSchemaType>
           name="quantity"

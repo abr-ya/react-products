@@ -10,3 +10,7 @@ export const PLACEHOLDERS = {
   PRODUCT: "Выберите ингридиент",
   QUANTITY: "Введите кол-во ингридиента",
 };
+
+export const ERRORS = {
+  PRODUCT: "Обязательное поле",
+};

@@ -1,4 +1,4 @@
-import { IProductCreatePayload } from "@/pages/ProductListPage/productContracts";
+import { IProduct, IProductCreatePayload } from "@/pages/ProductListPage/productContracts";
 import { ProductSchemaType } from "./productFormSchema";
 import { AddIngredientParamsType, IRecipeCreatePayload } from "@/pages/recipes/recipeContracts";
 import { RecipeSchemaType } from "./recipeFormSchema";
@@ -22,5 +22,7 @@ export const normalizeAddProductParams = (
 ): AddIngredientParamsType => ({
   quantity,
   recipeID,
-  ingredientId: productId,
+  ingredientId: productId.value,
 });
+
+export const prepareProductToSelect = ({ id, name }: IProduct) => ({ label: name, value: id });
