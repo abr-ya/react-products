@@ -4,6 +4,9 @@ import { CreateModal, ProductForm } from "..";
 import { IProductCreatePayload } from "@/pages/ProductListPage/productContracts";
 import { productApi } from "@/pages/ProductListPage/productApi";
 import { useLocation } from "react-router-dom";
+import { recipeApi } from "@/pages/recipes/recipeApi";
+import { IRecipeCreatePayload } from "@/pages/recipes/recipeContracts";
+import RecipeForm from "../forms/RecipeForm";
 
 const CreateButton = () => {
   const location = useLocation();
@@ -26,6 +29,16 @@ const CreateButton = () => {
     </CreateModal>
   );
 
+  const [createRecipeMutation, { isLoading: recipeCreating }] = recipeApi.useCreateRecipeMutation();
+
+  const recipeCreateHandler = (data: IRecipeCreatePayload) => {
+    console.log("create recipe:", data);
+    createRecipeMutation(data)
+      .unwrap()
+      .then((res) => console.log("created: ", res))
+      .catch((err) => console.log(err));
+  };
+
   const contentRender = (page: string) => {
     switch (page) {
       case "/products":
@@ -35,7 +48,11 @@ const CreateButton = () => {
           <ProductForm onModalApply={productCreateHandler} onModalClose={onClose} />,
         );
       case "/recipes":
-        return modalRender("Create Recipe", false, <span>Форма добавления рецепта</span>);
+        return modalRender(
+          "Create Recipe",
+          recipeCreating,
+          <RecipeForm onModalApply={recipeCreateHandler} onModalClose={onClose}/>
+        );
       default:
         if (page.startsWith("/recipes/"))
           return modalRender("Add Product", false, <span>Форма добавления ингридиента в рецепт</span>);
