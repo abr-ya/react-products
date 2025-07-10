@@ -8,5 +8,7 @@ export { default as Header } from "./layout/Header";
 export { default as Footer } from "./layout/Footer";
 
 export { default as ProductForm } from "./forms/ProductForm";
+export { default as RecipeForm } from "./forms/RecipeForm";
+export { default as ProductToRecipeForm } from "./forms/ProductToRecipeForm";
 
 export { default as CreateModal } from "./modals/CreateModal";

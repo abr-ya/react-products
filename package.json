@@ -28,6 +28,7 @@
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.24.1",
     "react-select": "^5.10.1",
+    "use-mask-input": "^3.4.2",
     "xlsx": "^0.18.5",
     "yup": "^1.4.0",
     "zod": "^3.25.67"
