@@ -15,7 +15,8 @@ export const productToRecipeFormSchema = z.object({
 export type ProductToRecipeFormSchemaType = z.infer<typeof productToRecipeFormSchema>;
 
 export const defaultValues: ProductToRecipeFormSchemaType = {
-  // @ts-expect-error не лучшее решение, но пока так)
+  // @ts-expect-error не лучшее решение, но пока так) todo
   productId: null,
-  quantity: 0,
+  // @ts-expect-error пустое значение вылядит лучше, чем 0, todo
+  quantity: "",
 };

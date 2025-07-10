@@ -13,6 +13,8 @@ const CreateButton = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [createProductMutation, { isLoading: productCreating }] = productApi.useCreateProductMutation();
+  const [createRecipeMutation, { isLoading: recipeCreating }] = recipeApi.useCreateRecipeMutation();
+  const [addProductMutation, { isLoading: productAdding }] = recipeApi.useAddRecipeIngredientMutation();
 
   const productCreateHandler = (data: IProductCreatePayload) => {
     console.log("create product:", data);
@@ -21,14 +23,6 @@ const CreateButton = () => {
       .then((res) => console.log("created: ", res))
       .catch((err) => console.log(err));
   };
-
-  const modalRender = (title: string, isLoading: boolean, form: JSX.Element) => (
-    <CreateModal title={title} isOpen={isOpen} onClose={onClose} height="400px" isLoading={isLoading}>
-      {form}
-    </CreateModal>
-  );
-
-  const [createRecipeMutation, { isLoading: recipeCreating }] = recipeApi.useCreateRecipeMutation();
 
   const recipeCreateHandler = (data: IRecipeCreatePayload) => {
     console.log("create recipe:", data);
@@ -39,8 +33,15 @@ const CreateButton = () => {
   };
 
   const addProductToRecipeHandler = (data: AddIngredientParamsType) => {
-    console.log(data);
+    console.log("add product", data);
+    addProductMutation(data);
   };
+
+  const modalRender = (title: string, isLoading: boolean, form: JSX.Element) => (
+    <CreateModal title={title} isOpen={isOpen} onClose={onClose} height="400px" isLoading={isLoading}>
+      {form}
+    </CreateModal>
+  );
 
   const contentRender = (page: string) => {
     switch (page) {
@@ -60,8 +61,8 @@ const CreateButton = () => {
         if (page.startsWith("/recipes/"))
           return modalRender(
             "Add Product",
-            false,
-            <ProductToRecipeForm onModalApply={addProductToRecipeHandler} onModalClose={onClose} />,
+            productAdding,
+            <ProductToRecipeForm onModalApply={addProductToRecipeHandler} onModalClose={onClose} pageUrl={page} />,
           );
 
         return modalRender("Create Modal", false, <span>Нет создания на этой странице</span>);

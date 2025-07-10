@@ -15,18 +15,20 @@ import { getProductsAsync } from "@/api";
 interface IProductToRecipeForm {
   onModalApply(data: AddIngredientParamsType): void;
   onModalClose(): void;
+  pageUrl: string;
 }
 
-const ProductToRecipeForm = ({ onModalApply, onModalClose }: IProductToRecipeForm) => {
-  const { handleSubmit } = useFormContext<ProductToRecipeFormSchemaType>();
+const ProductToRecipeForm = ({ onModalApply, onModalClose, pageUrl }: IProductToRecipeForm) => {
+  const { handleSubmit, reset } = useFormContext<ProductToRecipeFormSchemaType>();
 
   const submitHandler: SubmitHandler<ProductToRecipeFormSchemaType> = (data) => {
-    const normalizedData = normalizeAddProductParams(data, "1234"); // todo!!!!!!!
+    const normalizedData = normalizeAddProductParams(data, pageUrl.split("/")[2]); // todo!!!!!!!
     if (TEST_MODE) {
       console.log("submitHandler data", data, normalizedData);
     } else {
       onModalApply(normalizedData);
     }
+    reset();
   };
 
   const errorHandler: SubmitErrorHandler<ProductToRecipeFormSchemaType> = (errors) => {
