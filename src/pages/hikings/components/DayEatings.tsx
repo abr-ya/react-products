@@ -1,6 +1,7 @@
-import { Card, CardBody, CardHeader, Heading, SimpleGrid, Text, Table, Tbody, Tr, Td } from "@chakra-ui/react";
+import { Card, CardBody, CardHeader, Heading, SimpleGrid } from "@chakra-ui/react";
 import { IEating } from "../hikingContracts";
 import AddFooter from "./AddFooter";
+import EatingCard from "./EatingCard";
 
 interface IEatingProps {
   dayNumber: number;
@@ -25,23 +26,11 @@ const DayEatings = ({ dayNumber, eatings, hikingId, membersTotal }: IEatingProps
           <CardHeader>
             <Heading size="sm">{el.name} </Heading>
           </CardHeader>
-          <CardBody>
+          <CardBody py={0}>
             {eatings
               .filter((eat) => eat.eatingTime.id == el.id)
-              .map((e) => (
-                <div key={e.id}>
-                  <Text>{e.recipe.name}</Text>
-                  <Table size="sm">
-                    <Tbody>
-                      {e.recipe.ingredients.map(({ id, ingredient, quantity }) => (
-                        <Tr key={id}>
-                          <Td>{ingredient.name}</Td>
-                          <Td>{quantity * membersTotal}</Td>
-                        </Tr>
-                      ))}
-                    </Tbody>
-                  </Table>
-                </div>
+              .map((eating) => (
+                <EatingCard data={eating} membersTotal={membersTotal} />
               ))}
           </CardBody>
           <AddFooter position={{ hikingId, dayNumber, eatingTimeId: el.id }} />
