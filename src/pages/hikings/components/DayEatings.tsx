@@ -30,7 +30,7 @@ const DayEatings = ({ dayNumber, eatings, hikingId, membersTotal }: IEatingProps
             {eatings
               .filter((eat) => eat.eatingTime.id == el.id)
               .map((eating) => (
-                <EatingCard data={eating} membersTotal={membersTotal} />
+                <EatingCard key={eating.id} data={eating} membersTotal={membersTotal} />
               ))}
           </CardBody>
           <AddFooter position={{ hikingId, dayNumber, eatingTimeId: el.id }} />
