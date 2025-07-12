@@ -50,6 +50,13 @@ export const hikingApi = foodApi.injectEndpoints({
       }),
       invalidatesTags: ["Hiking"],
     }),
+    deleteEating: create.mutation<unknown, string>({
+      query: (id) => ({
+        url: `eatings/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Hiking"],
+    }),
   }),
   overrideExisting: true,
 });

@@ -1,12 +1,14 @@
-import { AddEatingModal } from "@/components";
+import { useState } from "react";
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import { Button, CardFooter, Flex, useDisclosure } from "@chakra-ui/react";
-import { IEatingPosition } from "../hikingContracts";
+import { MultiValue, SingleValue } from "react-select";
+
 import { recipeApi } from "@/pages/recipes/recipeApi";
+import { AddEatingModal } from "@/components";
 import CustomSelect from "@/components/Select/Select";
 import { ICustomSelectValue } from "@/components/Select/interfaces";
-import { MultiValue, SingleValue } from "react-select";
-import { useState } from "react";
+
+import { IEatingPosition } from "../hikingContracts";
 import { hikingApi } from "../hikingApi";
 
 interface IAddFooter {
