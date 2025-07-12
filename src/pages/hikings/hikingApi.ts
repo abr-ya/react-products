@@ -1,5 +1,12 @@
 import { foodApi } from "@/api/foodApi";
-import { IHiking, IGetHikingsPayload, IHikingCreatePayload, IHikingProduct } from "./hikingContracts";
+import {
+  IHiking,
+  IGetHikingsPayload,
+  IHikingCreatePayload,
+  IHikingProduct,
+  IEating,
+  IEatingCreatePayload,
+} from "./hikingContracts";
 
 const path = "hikings/";
 
@@ -32,6 +39,14 @@ export const hikingApi = foodApi.injectEndpoints({
         url: `${path}${id}`,
         method: "PATCH",
         body: payload,
+      }),
+      invalidatesTags: ["Hiking"],
+    }),
+    createEating: create.mutation<IEating, IEatingCreatePayload>({
+      query: (body) => ({
+        url: "eatings/",
+        method: "POST",
+        body,
       }),
       invalidatesTags: ["Hiking"],
     }),

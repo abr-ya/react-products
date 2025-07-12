@@ -47,3 +47,7 @@ export interface IEatingPosition {
   dayNumber: number;
   eatingTimeId: string;
 }
+
+export interface IEatingCreatePayload extends IEatingPosition {
+  recipeId: string;
+}

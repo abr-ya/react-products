@@ -7,6 +7,7 @@ import CustomSelect from "@/components/Select/Select";
 import { ICustomSelectValue } from "@/components/Select/interfaces";
 import { MultiValue, SingleValue } from "react-select";
 import { useState } from "react";
+import { hikingApi } from "../hikingApi";
 
 interface IAddFooter {
   position: IEatingPosition;
@@ -15,9 +16,9 @@ interface IAddFooter {
 const AddFooter = ({ position }: IAddFooter) => {
   const { data: recipes } = recipeApi.useGetRecipesListQuery({ page: 1 });
   const [recipe, setRecipe] = useState<ICustomSelectValue | null>(null);
+  const [createEatingMutation, { isLoading }] = hikingApi.useCreateEatingMutation();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const isLoading = false;
 
   const recipeOptions = recipes?.map(({ id, name }) => ({ label: name, value: id }));
 
@@ -27,8 +28,18 @@ const AddFooter = ({ position }: IAddFooter) => {
   };
 
   const addHandler = () => {
-    console.log("add", recipe?.value, "to", position);
-    setRecipe(null);
+    if (recipe?.value) {
+      console.log("add", recipe?.value, "to", position);
+      createEatingMutation({ ...position, recipeId: recipe?.value })
+        .unwrap()
+        .then((res) => {
+          console.log("created: ", res);
+          setRecipe(null);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      console.log("Нужно выбрать рецепт!"); // по идее кнопка под дизейблом и так!
+    }
   };
 
   const closeHandler = () => {
