@@ -41,3 +41,13 @@ export interface IHikingProduct {
   name: string;
   sum: number;
 }
+
+export interface IEatingPosition {
+  hikingId: string;
+  dayNumber: number;
+  eatingTimeId: string;
+}
+
+export interface IEatingCreatePayload extends IEatingPosition {
+  recipeId: string;
+}

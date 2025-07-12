@@ -11,4 +11,5 @@ export { default as ProductForm } from "./forms/ProductForm";
 export { default as RecipeForm } from "./forms/RecipeForm";
 export { default as ProductToRecipeForm } from "./forms/ProductToRecipeForm";
 
+export { default as AddEatingModal } from "./modals/AddRecipeModal";
 export { default as CreateModal } from "./modals/CreateModal";

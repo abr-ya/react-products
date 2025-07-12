@@ -38,7 +38,7 @@ const CreateButton = () => {
   };
 
   const modalRender = (title: string, isLoading: boolean, form: JSX.Element) => (
-    <CreateModal title={title} isOpen={isOpen} onClose={onClose} height="400px" isLoading={isLoading}>
+    <CreateModal title={title} isOpen={isOpen} onClose={onClose} isLoading={isLoading}>
       {form}
     </CreateModal>
   );
