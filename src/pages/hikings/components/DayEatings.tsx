@@ -15,7 +15,7 @@ const DayEatings = ({ dayNumber, eatings, hikingId, membersTotal }: IEatingProps
     { id: "1", name: "Завтрак" },
     { id: "2", name: "Обед" },
     { id: "3", name: "Ужин" },
-    { id: "0", name: "Завтрак" },
+    { id: "0", name: "Перекус" },
   ];
 
   return (
