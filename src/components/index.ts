@@ -3,6 +3,7 @@ export { default as CreateExcel } from "./CreateExcel";
 export { default as InputWithEdit } from "./InputWithEdit";
 export { default as Select } from "./Select/Select";
 export { SelectWithSearch } from "./Select/SelectWithSearch";
+export { default as SimpleTabs } from "./SimpleTabs";
 
 export { default as Header } from "./layout/Header";
 export { default as Footer } from "./layout/Footer";
