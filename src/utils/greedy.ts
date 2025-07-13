@@ -1,14 +1,19 @@
 import { getArraySum } from "./common";
 
-export const oneDayToPacks = (weights: number[], numPacks: number) => {
-  weights.sort((a, b) => b - a);
-  const packs: Array<number[]> = Array.from({ length: numPacks }, () => []);
+export interface IProductPack {
+  name: string;
+  value: number;
+}
+
+export const oneDayToPacks = (weights: IProductPack[], numPacks: number) => {
+  weights.sort((a, b) => b.value - a.value);
+  const packs: Array<IProductPack[]> = Array.from({ length: numPacks }, () => []);
   const packWeights = Array(numPacks).fill(0);
 
   for (const weight of weights) {
     const minIndex = packWeights.indexOf(Math.min(...packWeights));
     packs[minIndex].push(weight);
-    packWeights[minIndex] += weight;
+    packWeights[minIndex] += weight.value;
   }
 
   return packs;

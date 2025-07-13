@@ -21,7 +21,7 @@ const HikingPage = () => {
         <Heading>{data.name} </Heading>
         <Heading size="sm">{membersTotal} Участников</Heading>
       </HStack>
-      <SimpleTabs titles={TABS}>
+      <SimpleTabs titles={TABS} h="calc(100vh - 220px)">
         <ProductsByDays daysTotal={daysTotal} eatings={eatings} hikingId={id as string} membersTotal={membersTotal} />
         <ShoppingList id={id as string} />
         <PacksByUsers daysTotal={daysTotal} eatings={eatings} membersTotal={membersTotal} />
