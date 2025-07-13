@@ -9,10 +9,12 @@ const SimpleTabs: FC<PropsWithChildren<ISimpleTabs>> = ({ titles, children }) =>
   <Tabs variant="soft-rounded" colorScheme="green">
     <TabList>
       {titles.map((title) => (
-        <Tab>{title}</Tab>
+        <Tab key={title}>{title}</Tab>
       ))}
     </TabList>
-    <TabPanels>{Array.isArray(children) ? children.map((child) => <TabPanel>{child}</TabPanel>) : null}</TabPanels>
+    <TabPanels>
+      {Array.isArray(children) ? children.map((child, i) => <TabPanel key={`tab-panel-${i}`}>{child}</TabPanel>) : null}
+    </TabPanels>
   </Tabs>
 );
 

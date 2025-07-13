@@ -24,7 +24,7 @@ const HikingPage = () => {
       <SimpleTabs titles={TABS}>
         <ProductsByDays daysTotal={daysTotal} eatings={eatings} hikingId={id as string} membersTotal={membersTotal} />
         <ShoppingList id={id as string} />
-        <PacksByUsers />
+        <PacksByUsers daysTotal={daysTotal} eatings={eatings} membersTotal={membersTotal} />
       </SimpleTabs>
     </>
   );
