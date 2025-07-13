@@ -17,7 +17,8 @@ const ShoppingList = ({ id }: IShoppingList) => {
   return (
     <div>
       <h2>ShoppingList {id} </h2>
-      <Code>{JSON.stringify(data)}</Code>
+      <p>Всего в списке {data.length} позиций. Первые 10:</p>
+      <Code>{JSON.stringify(data.slice(0, 10))}</Code>
       <CreateExcel<IHikingProduct> data={data} fileName="ShoppingList" />
     </div>
   );
