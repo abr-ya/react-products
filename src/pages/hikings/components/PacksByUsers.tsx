@@ -9,7 +9,8 @@ import {
   Flex,
   UnorderedList,
 } from "@chakra-ui/react";
-import { getArraySum, getPackSum } from "@/utils/common";
+import { getPackSum } from "@/utils/common";
+import { CreateExcel } from "@/components";
 
 interface IPacksByUsers {
   daysTotal: number;
@@ -18,7 +19,6 @@ interface IPacksByUsers {
 }
 
 const PacksByUsers = ({ daysTotal, eatings, membersTotal }: IPacksByUsers) => {
-  const DESC = (a: number, b: number) => b - a;
   const itemsByDays: IProductPack[][] = Array.from({ length: daysTotal }, () => []);
   eatings.forEach((el) => {
     el.recipe.ingredients.map((product) => {
@@ -26,33 +26,39 @@ const PacksByUsers = ({ daysTotal, eatings, membersTotal }: IPacksByUsers) => {
     });
   });
 
+  console.log("itemsByDays", itemsByDays);
+
   const packsByDays: Array<IProductPack[][]> = itemsByDays.map((day) => oneDayToPacks(day, membersTotal));
 
   console.log("packsByDays", packsByDays);
 
-  const packsSumByDays: Array<number[]> = packsByDays.map((dayPacks) =>
-    dayPacks.map((el) => getPackSum(el)).sort(DESC),
+  const printPack = (pack: IProductPack) => `${pack.name} ${pack.value}`;
+
+  const groupsByDays = packsByDays.map((day, i) =>
+    day.map((pack) => ({ day: i + 1, name: pack.map((el) => printPack(el)).join(" + "), value: getPackSum(pack) })),
   );
 
-  const usersBags = packsToUsers(packsSumByDays);
+  console.log("groupsByDays", groupsByDays);
 
-  const printPack = (pack: IProductPack) => `${pack.name} ${pack.value}`;
+  const usersBags = packsToUsers(groupsByDays);
+
+  console.log("usersBags", usersBags);
 
   return (
     <>
       <Flex direction="column">
         <h2>Packs by Days</h2>
         <Accordion allowMultiple>
-          {itemsByDays.map((day, i) => (
+          {groupsByDays.map((day, i) => (
             <AccordionItem key={`accordion-item-${i}`}>
               <AccordionButton>
                 <AccordionIcon />
-                day {i + 1} == {getPackSum(day)}: {packsSumByDays[i].join(" + ")}
+                day {i + 1}: {day.map((el) => el.value).join(" + ")} = {getPackSum(day)}
               </AccordionButton>
               <AccordionPanel pb={4}>
-                {packsByDays[i].map((pack, i) => (
+                {day.map((pack, i) => (
                   <p key={`pack-${i}`}>
-                    {getPackSum(pack)}: {pack.map((el) => printPack(el)).join(" + ")}
+                    {pack.value}: {pack.name}
                   </p>
                 ))}
               </AccordionPanel>
@@ -64,9 +70,12 @@ const PacksByUsers = ({ daysTotal, eatings, membersTotal }: IPacksByUsers) => {
         <h2>Packs by Users</h2>
         <UnorderedList ml={4}>
           {usersBags.map((user, i) => (
-            <li key={`user-${i}`}>
-              спортсмен {i + 1}: {user.join(" + ")} == {getArraySum(user)}
-            </li>
+            <Flex mb={1} gap="4px">
+              <li key={`user-${i}`}>
+                спортсмен {i + 1}: {user.map((el) => el.value).join(" + ")} == {getPackSum(user)}
+              </li>
+              <CreateExcel data={user} fileName={`user-${i + 1}-by-days`} size="xs" />
+            </Flex>
           ))}
         </UnorderedList>
       </Flex>

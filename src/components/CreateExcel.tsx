@@ -7,6 +7,7 @@ interface ICreateExcel<T> {
   data: T[];
   fileName?: string;
   sheetName?: string;
+  size?: "sm" | "md" | "lg" | "xs";
 }
 
 const CreateExcel = <T,>({
@@ -14,6 +15,7 @@ const CreateExcel = <T,>({
   data,
   fileName = "data",
   sheetName = "Sheet1",
+  size = "md",
 }: ICreateExcel<T>) => {
   const exportData = () => {
     const ws = XLSX.utils.json_to_sheet(data);
@@ -27,7 +29,7 @@ const CreateExcel = <T,>({
   };
 
   return (
-    <Button colorScheme="blue" onClick={exportData}>
+    <Button colorScheme="blue" onClick={exportData} size={size}>
       {buttonTitle}
     </Button>
   );
