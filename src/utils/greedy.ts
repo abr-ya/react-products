@@ -1,4 +1,4 @@
-import { getArraySum } from "./common";
+import { getPackSum } from "./common";
 
 export interface IProductPack {
   name: string;
@@ -19,11 +19,12 @@ export const oneDayToPacks = (weights: IProductPack[], numPacks: number) => {
   return packs;
 };
 
-export const packsToUsers = (packs: Array<number[]>) => {
-  const usersPacks: Array<number[]> = Array.from({ length: packs[0].length }, () => []);
+export const packsToUsers = (packs: Array<IProductPack[]>) => {
+  const usersPacks: Array<IProductPack[]> = Array.from({ length: packs[0].length }, () => []);
 
   packs.forEach((day) => {
-    usersPacks.sort((a: number[], b: number[]) => getArraySum(a) - getArraySum(b));
+    day.sort((a: IProductPack, b: IProductPack) => b.value - a.value);
+    usersPacks.sort((a: IProductPack[], b: IProductPack[]) => getPackSum(a) - getPackSum(b));
     usersPacks.forEach((user, index) => user.push(day[index]));
   });
 
